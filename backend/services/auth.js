@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-const secreatkey = "chatapp@#8800^1.0.0"
+const secreatkey = process.env.JWT_SECRET
 function setUser(user){
     // <---------------------returns a random id----------------->
     return jwt.sign({

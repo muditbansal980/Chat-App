@@ -1,4 +1,5 @@
 const {connectiondb} = require("./connection")
+const http = require("http");
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -15,6 +16,7 @@ const uploadrouter = require("./routes/uploadprofilepic");
 const searchrouter = require("./routes/search")
 // const {searchmiddleware} = require("./middlewares/search")
 // app.use(cors());
+const server = http.createServer(app);
 app.use(
   cors({
     origin: 'https://chat-app-six-gules-60.vercel.app', // replace with your frontend origin (scheme+host+port)
@@ -36,9 +38,9 @@ app.use("/search",authMiddleware,searchrouter)
 app.use("/uploadpic",authMiddleware,multermiddleware,uploadrouter)
 app.use("/getuploadpic",authMiddleware,uploadrouter)
 app.use("/chat",authMiddleware,chatrouter)
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running  on http://localhost:${process.env.PORT}`);
+server.listen(process.env.PORT, () => {
+    console.log(`Server is running on http://localhost:${process.env.PORT}`);
+    console.log(`WebSocket server attached on same port`);
 });
 
-
-handleWebsocket();
+handleWebsocket(server);

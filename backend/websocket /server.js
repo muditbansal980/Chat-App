@@ -1,10 +1,10 @@
 const websocket = require('ws');
 const jwt = require("jsonwebtoken")
 const ChatSchema = require("../model/chat")
-async function handleWebsocket() {
+async function handleWebsocket(server) {
     const WebSocketServer = websocket.Server;
-    const wss = new WebSocketServer({ port: 3005 });
-    console.log("WebSocket server started on ws://localhost:3005");
+    const wss = new WebSocketServer({ server });
+    console.log("WebSocket server attached to HTTP server");
     const clients = new Set();
     wss.on("connection", (ws, req) => {
         // console.log("CLIENTS", clients);
@@ -16,7 +16,7 @@ async function handleWebsocket() {
         }
         try {
             clients.add(ws);
-            const decoded = jwt.verify(token, "chatapp@#8800^1.0.0");
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
             const userId = decoded._id; // from the users collections _id
             // Mark user as connected
             ws.userId = userId;  // from the users collections _id

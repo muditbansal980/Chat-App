@@ -3,7 +3,7 @@ const Chat = require("../model/chat")
 async function handlechatsendedmess(req,res) {
     const id = req.params.friendId; //came from frontend the id of the friend user is sending the message
     const token = req.cookies?.uid  // accessing the token from cookies
-    const decoded = jwt.verify(token, "chatapp@#8800^1.0.0"); // decoding the token to get user data
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // decoding the token to get user data
     const userId = decoded._id; // id of the user who is logged in and sending message and it is the same id that is in the users db with _id field
     // console.log("UserId in chat controller who is sending message:", userId);
     // console.log("UserId in chat controller who is receiving message:", id);
@@ -14,7 +14,7 @@ async function handlechatsendedmess(req,res) {
 async function handlechatreceivedmess(req,res) {
     const id = req.params.friendId; //came from frontend the id of the friend user is receiving the message
     const token = req.cookies?.uid  // accessing the token from cookies
-    const decoded = jwt.verify(token, "chatapp@#8800^1.0.0"); // decoding the token to get user data
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // decoding the token to get user data
     const userId = decoded._id; // id of the user who is logged in and receiving message and it is the same id that is in the users db with _id field
     // console.log("UserId in chat controller who is sending message:", userId);
     // console.log("UserId in chat controller who is receiving message:", id);
