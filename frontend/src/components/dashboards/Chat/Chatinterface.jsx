@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useWebSocket } from '../../../context/WebSocketContext';
 import { useParams } from "react-router-dom";
+import { API_BASE_URL } from '../../../config/api';
 
 
 // import Websocket from '../../../websocket /ws';
@@ -50,7 +51,7 @@ export default function ChatSection(props) {
     async function sendedMessages(e) {
       // e.preventDefault();
       try {
-        const res = await fetch(`http://localhost:3004/chat/sendedmessages/${friendId}`, {
+        const res = await fetch(`${API_BASE_URL}/chat/sendedmessages/${friendId}`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -76,7 +77,7 @@ export default function ChatSection(props) {
   useEffect(() => {
     async function ReceivedMessages() {
       try {
-        const res = await fetch(`http://localhost:3004/chat/receivedmessages/${friendId}`, {
+        const res = await fetch(`${API_BASE_URL}/chat/receivedmessages/${friendId}`, {
           method: "GET",
           credentials: "include",
         }

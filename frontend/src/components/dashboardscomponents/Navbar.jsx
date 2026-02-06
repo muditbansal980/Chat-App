@@ -3,13 +3,14 @@ import Search from "../../assets/search.svg"
 import Profile from "../../assets/profile.png"
 import { useState,useEffect } from 'react'; 
 import { Link } from 'react-router-dom'
+import { API_BASE_URL } from '../../config/api';
 export default function Navbar() {
      const [preview, setPreview] = useState(Profile);
     // fetchign the profile pic from backend to display in navbar
     useEffect(()=>{
         async function fetchProfilePic(){
             try{
-                const res = await fetch("http://localhost:3004/getuploadpic/getuploadprofile",{
+                const res = await fetch(`${API_BASE_URL}/getuploadpic/getuploadprofile`,{
                     method:"GET",
                     credentials:"include"
                 });

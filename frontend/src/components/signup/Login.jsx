@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Loading from "../Loading/Loading"
+import { API_BASE_URL } from '../../config/api';
 export default function Login() {
     const display = useRef(true);
     const [text, setText] = useState("Login using phone number");
@@ -33,7 +34,7 @@ export default function Login() {
         e.preventDefault();
         try {
             setloading(true)
-            const res = await fetch("http://localhost:3004/user/", {
+            const res = await fetch(`${API_BASE_URL}/user/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

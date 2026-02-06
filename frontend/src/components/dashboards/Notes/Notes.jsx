@@ -4,6 +4,7 @@ import Loading from "../../Loading/Loading"
 import Sidebar from "../../dashboardscomponents/Sidebar"
 import EditNote from "../../../assets/editnote.png"
 import Editnote from "./EditNote";
+import { API_BASE_URL } from '../../../config/api';
 export default function Notes() {
     const [display, setDisplay] = useState("hidden");
     const [displays, setDisplays] = useState("hidden");
@@ -36,7 +37,7 @@ export default function Notes() {
         async function fetchNotes() {
             try {
                 setloading(true)
-                const res = await fetch("http://localhost:3004/notes/notes", {
+                const res = await fetch(`${API_BASE_URL}/notes/notes`, {
                     method: "GET",
                     credentials: 'include',
                     headers: {

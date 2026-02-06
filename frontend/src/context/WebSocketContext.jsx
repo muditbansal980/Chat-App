@@ -1,6 +1,7 @@
 
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { WS_BASE_URL } from "../config/api";
 
 const WebSocketContext = createContext(null);
 
@@ -9,7 +10,7 @@ export function WebSocketProvider({ children }) {
     const [incomeMessages, setincomeMessages] = useState([]);
     useEffect(() => {
         const token = localStorage.getItem("uid");
-        const ws = new WebSocket(`ws://localhost:3005?uid=${token}`);
+        const ws = new WebSocket(`${WS_BASE_URL}?uid=${token}`);
 
         socketRef.current = ws;
 

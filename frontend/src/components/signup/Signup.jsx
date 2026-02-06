@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading"
+import { API_BASE_URL } from '../../config/api';
 export default function Signup() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -19,7 +20,7 @@ export default function Signup() {
         e.preventDefault();
         try {
             setloading(true)
-            const res = await fetch("http://localhost:3004/user/signup", {
+            const res = await fetch(`${API_BASE_URL}/user/signup`, {
                 method: "POST",
                 headers: {
                      "Content-Type": "application/json"

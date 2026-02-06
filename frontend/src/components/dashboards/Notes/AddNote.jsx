@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Editnote from "./EditNote";
 import { useNavigate } from "react-router-dom"
+import { API_BASE_URL } from '../../../config/api';
 export default function AddNote(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -12,7 +13,7 @@ export default function AddNote(props) {
         e.preventDefault();
         try {
             // <------------POST request to add note to backend-------------->
-            const res = await fetch("http://localhost:3004/notes/addnote", {
+            const res = await fetch(`${API_BASE_URL}/notes/addnote`, {
                 method: "POST",
                 credentials: "include",
                 headers: {

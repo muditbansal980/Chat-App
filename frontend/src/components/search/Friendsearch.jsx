@@ -4,6 +4,7 @@ import { UserPlus, Users } from 'lucide-react';
 import Loading from "../Loading/Loading"
 import Sidebar from "../dashboardscomponents/Sidebar"
 import FriendRequestImg from "../../assets/friendrequest.svg"
+import { API_BASE_URL } from '../../config/api';
 // import FriendRequestSentImg from "../../assets/friend-req-sent.png"
 export default function FriendSearch() {
     const [searchvalue, setsearchvalue] = useState("")
@@ -21,7 +22,7 @@ export default function FriendSearch() {
         e.preventDefault();
         try {
             setloading(true)
-            const getres = await fetch(`http://localhost:3004/search/friends?search=${encodeURIComponent(searchvalue)}`, {
+            const getres = await fetch(`${API_BASE_URL}/search/friends?search=${encodeURIComponent(searchvalue)}`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -57,7 +58,7 @@ export default function FriendSearch() {
     async function handlependreq(e) {
         e.preventDefault();
         try {
-            const sendreq = await fetch("http://localhost:3004/search/sendrequest", {
+            const sendreq = await fetch(`${API_BASE_URL}/search/sendrequest`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -88,7 +89,7 @@ export default function FriendSearch() {
     async function handleaddfriend(id) {
         // e.preventDefault()
         try {
-            const addfriendres = await fetch("http://localhost:3004/search/addfriend", {
+            const addfriendres = await fetch(`${API_BASE_URL}/search/addfriend`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -107,7 +108,7 @@ export default function FriendSearch() {
                 setfriendrequests(friendrequests.filter(req => req._id !== id));
 
                 // Refetch friends list
-                const fetchfriendres = await fetch("http://localhost:3004/search/getfriends", {
+                const fetchfriendres = await fetch(`${API_BASE_URL}/search/getfriends`, {
                     method: "GET",
                     credentials: "include",
                     headers: {
@@ -126,7 +127,7 @@ export default function FriendSearch() {
     }
     useEffect(() => {
         async function getfriendres() {
-            const getfriendres = await fetch("http://localhost:3004/search/getfriendrequests", {
+            const getfriendres = await fetch(`${API_BASE_URL}/search/getfriendrequests`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -141,7 +142,7 @@ export default function FriendSearch() {
     }, [])
     useEffect(() => {
         async function fetchFriends() {
-            const fetchfriendres = await fetch("http://localhost:3004/search/getfriends", {
+            const fetchfriendres = await fetch(`${API_BASE_URL}/search/getfriends`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -158,7 +159,7 @@ export default function FriendSearch() {
     useEffect(() => {
         async function fetchSentRequests() {
             try {
-                const response = await fetch("http://localhost:3004/search/getsentrequests", {
+                const response = await fetch(`${API_BASE_URL}/search/getsentrequests`, {
                     method: "GET",
                     credentials: "include",
                     headers: {
@@ -177,7 +178,7 @@ export default function FriendSearch() {
     }, [])
 
     async function handleremovefriend(id) {
-        const removeres = await fetch("http://localhost:3004/search/removefriend", {
+        const removeres = await fetch(`${API_BASE_URL}/search/removefriend`, {
             method: "POST",
             credentials: "include",
             headers: {

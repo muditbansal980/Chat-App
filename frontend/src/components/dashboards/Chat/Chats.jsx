@@ -3,6 +3,7 @@ import Navbar from "../../dashboardscomponents/Navbar"
 import { useNavigate } from "react-router-dom";
 // import Chatinterface from "./Chatinterface";
 import Websocket from "../../../websocket /ws";
+import { API_BASE_URL } from '../../../config/api';
 export default function Chats() {
     const navigate = useNavigate();
     const [friendslist, setfriendslist] = useState([]);
@@ -31,7 +32,7 @@ export default function Chats() {
     useEffect(() => {
         async function fetchfriends() {
             try {
-                const fetchfriend = await fetch("http://localhost:3004/search/getfriends", {
+                const fetchfriend = await fetch(`${API_BASE_URL}/search/getfriends`, {
                     method: "GET",
                     credentials: "include",
                     headers: {

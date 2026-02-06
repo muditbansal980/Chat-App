@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Profile from "../../assets/profile.png";
+import { API_BASE_URL } from '../../config/api';
 // Uploadprofile now accepts props:   (string) and onUpdate (function)
 export default function Uploadprofile() {
     const fileInputRef = useRef(null);
@@ -25,7 +26,7 @@ export default function Uploadprofile() {
         const formData = new FormData();
         formData.append("profilePic", file);
         try {
-            const res = await fetch("http://localhost:3004/uploadpic/uploadprofile", {
+            const res = await fetch(`${API_BASE_URL}/uploadpic/uploadprofile`, {
                 method: "POST",
                 headers: {
                     // "Content-Type":"multipart/form-data"  // Do not set content-type for multipart/form-data, browser will set it including boundary
@@ -44,7 +45,7 @@ export default function Uploadprofile() {
     useEffect(() => {
         try {
             async function getUploadPic() {
-                const res = await fetch("http://localhost:3004/getuploadpic/getuploadprofile", {
+                const res = await fetch(`${API_BASE_URL}/getuploadpic/getuploadprofile`, {
                     method: "GET",
                     credentials: "include"
                 });

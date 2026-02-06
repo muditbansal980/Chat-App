@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_BASE_URL } from '../../../config/api';
 export default function EditNote(props) {
     const [titledit, settitledit] = useState("");
     const [content, setContent] = useState("");
@@ -6,7 +7,7 @@ export default function EditNote(props) {
     async function handleedit(id){
        
         try {
-            const res = await fetch(`http://localhost:3004/notes/editnote/${id}`, {
+            const res = await fetch(`${API_BASE_URL}/notes/editnote/${id}`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
