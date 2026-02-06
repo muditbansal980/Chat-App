@@ -58,8 +58,16 @@ async function handleLogin(req, res) {
             // Store user session and log it back using getUser
             const token = setUser(users); // Store user session
             const uploadToken = setUploadUserPic(users);
-            res.cookie("uid", token );
-            res.cookie("upic", uploadToken );
+            res.cookie("uid", token,{
+                httpOnly: true,
+                secure: true,
+                sameSite: 'none', 
+            } );
+            res.cookie("upic", uploadToken,{
+                httpOnly: true,
+                secure: true, 
+                sameSite: 'none', 
+            });
             return res.status(200).json({ "uid": token, "upic": uploadToken } );
         }
     } catch (err) {
