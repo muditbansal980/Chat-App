@@ -1,5 +1,6 @@
+require("dotenv").config();
 const jwt = require("jsonwebtoken")
-const secreatkey = "uploadpic@#8800^1.0.0"
+const secreatkey = process.env.UPLOAD_SECRET
 function setUploadUserPic(user){
     // <---------------------returns a random id----------------->
     return jwt.sign({
