@@ -29,13 +29,15 @@ export default function AddNote(props) {
             if (res.status === 201) {
                 setTitle("");
                 setContent("");
-                
+
                 // <----------These two lines 28,29 will not work as due to setError(true) and setErrormsg("Note added successfully"); the re rendering happens so setTitle changes the component state and the input fields get cleared------->
                 // inputValue.current.value = "";
                 // contentValue.current.value = "";
                 setError(true);
+                
                 setErrormsg("Note added successfully");
                 props.setnoteslist([...props.noteslist, { "title": title, "content": content }]);
+                props.onClose();
             }
             if (res.status === 404) {
                 navigate("/")
@@ -54,7 +56,6 @@ export default function AddNote(props) {
         }, 2000)
     }, [error])
     if (props.display === "hidden") return null;
-
     return (
         <div
             className="fixed inset-0 z-[90] flex items-center justify-center bg-black bg-opacity-50"
@@ -80,7 +81,7 @@ export default function AddNote(props) {
                     <button onClick={handleadd} className="bg-white hover:cursor-pointer text-black p-[5px] rounded-[5px]">Add Note</button>
                 </div>
             </div>
-            <div className={`bg-red-500 text-white p-4 rounded fixed top-0  ${error ? "block" : "hidden"}`} >
+            <div className={`bg-red-500 z-400 text-white p-4 rounded fixed top-0  ${error ? "block" : "hidden"}`} >
                 <h2>{ErrorMsg}</h2>
             </div>
             <Editnote />
