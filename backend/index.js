@@ -19,7 +19,7 @@ const searchrouter = require("./routes/search")
 const server = http.createServer(app);
 app.use(
   cors({
-    origin: 'https://chat-app-six-gules-60.vercel.app', // replace with your frontend origin (scheme+host+port)
+    origin:['https://chat-app-six-gules-60.vercel.app', 'http://localhost:5173'], // replace with your frontend origin (scheme+host+port)
     credentials: true,               // allow Access-Control-Allow-Credentials
   })
 );
