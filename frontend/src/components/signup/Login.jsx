@@ -47,7 +47,7 @@ export default function Login() {
                 })
             });
             if (res.status === 200) {
-                navigate("/uploadprofile");
+                navigate("/chats");
                 const data = await res.json();
                 localStorage.setItem('uid', data.uid);
                 localStorage.setItem('upic', data.upic);
