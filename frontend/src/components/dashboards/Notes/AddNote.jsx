@@ -29,8 +29,7 @@ export default function AddNote(props) {
             if (res.status === 201) {
                 setTitle("");
                 setContent("");
-
-
+                
                 // <----------These two lines 28,29 will not work as due to setError(true) and setErrormsg("Note added successfully"); the re rendering happens so setTitle changes the component state and the input fields get cleared------->
                 // inputValue.current.value = "";
                 // contentValue.current.value = "";
