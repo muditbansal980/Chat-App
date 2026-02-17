@@ -9,6 +9,7 @@ import Navbar from "./components/dashboardscomponents/Navbar";
 import Notes from "./components/dashboards/Notes/Notes";
 import Chatsection from "./components/dashboards/Chat/Chatinterface";
 import { useState } from "react";
+import LinkStorager from "./components/dashboards/LinkStorager/Link-storager"
 import FriendSearch from "./components/search/Friendsearch";
 import WebSocketLayout from "./layouts/WebSocketLayout";
 // import {useState} from "react"
@@ -52,6 +53,10 @@ function App() {
       path: "/Friendsearch",
       element: <FriendSearch />
     },
+    {
+      path:"/LinkStorager",
+      element:<LinkStorager/>
+    }
     // {
     //   path: "/chatinterface",
     //   element: <Chatsection />

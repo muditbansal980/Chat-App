@@ -8,6 +8,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userouter = require("./routes/user");
 const notesrouter = require("./routes/notes");
+const linkrouter = require("./routes/link");
 const chatrouter = require("./routes/chat");
 const {authMiddleware} = require("./middlewares/auth");
 const {multermiddleware} = require("./middlewares/multer");
@@ -34,6 +35,7 @@ connectiondb(process.env.MONGODB_URI).then(() => console.log(`MONGODB CONENCTED`
 app.use("/user",userouter)
 // protect notes routes so req.user is populated from session cookie
 app.use("/notes",authMiddleware,notesrouter)
+app.use("/link",authMiddleware,linkrouter)
 app.use("/search",authMiddleware,searchrouter)
 app.use("/uploadpic",authMiddleware,multermiddleware,uploadrouter)
 app.use("/getuploadpic",authMiddleware,uploadrouter)

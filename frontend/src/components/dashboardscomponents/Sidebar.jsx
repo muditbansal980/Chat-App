@@ -41,10 +41,10 @@ export default function Sidebar() {
                     <div className="flex justify-center items-center mt-[15px]" ><img className="w-[36px]  invert sepia-100 saturate-[200] hover:grayscale-0 transition duration-300" src={Notes} /></div>
                     <div className="flex justify-center items-center text-[white] ">Notes</div>
                 </div></Link>
-                <div className="hover:cursor-pointer">
+                <Link to="/LinkStorager"><div className="hover:cursor-pointer">
                     <div className="flex justify-center items-center mt-[15px]" ><img className="w-[36px]  invert sepia-100 saturate-[200] hover:grayscale-0 transition duration-300" src={LinkImg} /></div>
                     <div className="flex justify-center items-center text-[white] ">Link</div>
-                </div>
+                </div></Link>
             </div>
         </>
     )
