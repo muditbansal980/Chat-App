@@ -8,6 +8,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userouter = require("./routes/user");
 const notesrouter = require("./routes/notes");
+const todorouter = require("./routes/todo");
 const linkrouter = require("./routes/link");
 const chatrouter = require("./routes/chat");
 const {authMiddleware} = require("./middlewares/auth");
@@ -20,7 +21,7 @@ const searchrouter = require("./routes/search")
 const server = http.createServer(app);
 app.use(
   cors({
-    origin:['https://chat-app-six-gules-60.vercel.app', 'http://localhost:5174','http://localhost:5173'], // replace with your frontend origin (scheme+host+port)
+    origin:['https://chat-app-six-gulesapp.use(cookieParser());-60.vercel.app', 'http://localhost:5174','http://localhost:5173'], // replace with your frontend origin (scheme+host+port)
     credentials: true,               // allow Access-Control-Allow-Credentials
   })
 );
@@ -40,6 +41,7 @@ app.use("/search",authMiddleware,searchrouter)
 app.use("/uploadpic",authMiddleware,multermiddleware,uploadrouter)
 app.use("/getuploadpic",authMiddleware,uploadrouter)
 app.use("/chat",authMiddleware,chatrouter)
+app.use("/todo",authMiddleware,todorouter)
 server.listen(process.env.PORT, () => {
     console.log(`Server is running on http://localhost:${process.env.PORT}`);
     console.log(`WebSocket server attached on same port`);

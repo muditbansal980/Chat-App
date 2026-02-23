@@ -8,6 +8,7 @@ import Sidebar from "./components/dashboardscomponents/Sidebar";
 import Navbar from "./components/dashboardscomponents/Navbar";
 import Notes from "./components/dashboards/Notes/Notes";
 import Chatsection from "./components/dashboards/Chat/Chatinterface";
+import Todo from "./components/dashboards/todo/todo"
 import { useState } from "react";
 import LinkStorager from "./components/dashboards/LinkStorager/Link-storager"
 import FriendSearch from "./components/search/Friendsearch";
@@ -56,6 +57,10 @@ function App() {
     {
       path:"/LinkStorager",
       element:<LinkStorager/>
+    },
+    {
+      path:"/todo",
+      element:<Todo/>
     }
     // {
     //   path: "/chatinterface",
