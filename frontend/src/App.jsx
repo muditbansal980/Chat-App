@@ -44,7 +44,7 @@ function App() {
     },
     {
       path: "/uploadprofile",
-      element: <Uploadprofile profileUrl={profileUrl} onUpdate={setProfileUrl} /> //added props by ai
+      element: <Uploadprofile profileUrl={profileUrl} onUpdate={setProfileUrl} /> 
     },
     {
       path: "/notes",
